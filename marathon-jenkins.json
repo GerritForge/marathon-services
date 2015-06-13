@@ -1,0 +1,21 @@
+{
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "jucc/jenkins-master-test",
+        "network": "BRIDGE",
+        "portMappings": [
+                { "containerPort": 8080, "hostPort": 8081, "protocol": "tcp"}
+        ],
+        "parameters":[
+                {"key":"hostname", "value":"jenkins-master.gerritforge.internal"}
+        ]
+    }
+ },
+  "id": "jenkins-master",
+  "instances": 1,
+  "cpus": 1,
+  "mem": 4240,
+  "cmd": "jenkins.sh",
+  "constraints": [["hostname", "CLUSTER", "mesos3.gerritforge.com"]]
+}

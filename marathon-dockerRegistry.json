@@ -1,0 +1,27 @@
+{
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "secure_registry",
+        "network": "BRIDGE",
+        "portMappings": [
+                { "containerPort": 5000, "hostPort": 5000, "protocol": "tcp"}
+        ],
+        "parameters":[
+                {"key":"hostname", "value":"registry.gerritforge.internal"}
+        ]
+    },
+    "volumes": [
+      {
+        "containerPath": "/var/lib/registry",
+        "hostPath": "/docker/registry",
+        "mode": "RW"
+      }
+    ]
+ },
+  "id": "registry",
+  "instances": 1,
+  "cpus": 1,
+  "mem": 4240,
+  "constraints": [["hostname", "CLUSTER", "mesos3.gerritforge.com"]]
+}
