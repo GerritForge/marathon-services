@@ -2,7 +2,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "jucc/jenkins-master-test",
+      "image": "mesos3.gerritforge.com:5000/jenkins-master-juc",
 	"privileged": true,
         "network": "BRIDGE",
         "portMappings": [
@@ -11,12 +11,19 @@
         "parameters":[
                 {"key":"hostname", "value":"jenkins-master.gerritforge.internal"}
         ]
-    }
+    },
+    "volumes": [
+      {
+        "containerPath": "/var/jenkins_home/workspace",
+        "hostPath": "/docker/jenkins-master/workspace",
+        "mode": "RW"
+      }
+    ]
  },
   "id": "jenkins-master",
   "instances": 1,
   "cpus": 1,
-  "mem": 4240,
+  "mem": 8192,
   "cmd": "jenkins.sh",
   "constraints": [["hostname", "CLUSTER", "mesos3.gerritforge.com"]]
 }
