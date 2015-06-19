@@ -11,7 +11,19 @@
         "parameters":[
                 {"key":"hostname", "value":"gerrit-server.gerritforge.internal"}
         ]
-    }
+      },
+      "volumes": [
+      {
+        "containerPath": "/home/gerrit2/gerrit/git",
+        "hostPath": "/home/gerrit2/gerrit/git",
+        "mode": "RW"
+      },
+      {
+        "containerPath": "/home/gerrit2/gerrit/db",
+        "hostPath": "/home/gerrit2/gerrit/db",
+        "mode": "RW"
+      }
+      ]
  },
   "id": "gerrit",
   "instances": 1,
