@@ -2,7 +2,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "gerrit-server:v2",
+      "image": "gerrit-server:latest",
         "network": "BRIDGE",
         "portMappings": [
                 { "containerPort": 8081, "hostPort": 8081, "protocol": "tcp"},
